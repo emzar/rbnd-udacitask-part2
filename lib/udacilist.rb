@@ -38,6 +38,10 @@ class UdaciList
     end
   end
 
+  def delete_if(item_type)
+    @items.delete_if { |item| item.type == item_type }
+  end
+
   private
 
   def table(items)
