@@ -1,13 +1,23 @@
 # What you added to Udacitask 2.0
 # -------------------------------------------------------
 1. What is the gem of your choice and how did you use it?
+Terminal-Table, print list in table view
+
 2. Describe the 2 features you added to the project.
-  a) Feature 1...
-  b) Feature 2...
+  a) print list in table view
+  b) delete items by type
 
 # REFLECTIONS
 # -------------------------------------------------------
 1. How long did you spend working on this project?
+8 hours
+
 2. What was the most rewarding challenge you conquered?
+to refactor format_date() to support both single and pair dates
+
 3. What two additional features did you build? Why?
+- print list in table view, table is more readable
+- delete items by type, to avoid several deletes by index
+
 4. Where do you still have room to grow?
+add events to calendar
