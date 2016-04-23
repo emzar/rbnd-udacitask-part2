@@ -41,10 +41,8 @@ class UdaciList
   private
 
   def table(items)
-    table = Terminal::Table.new(@table_options)
-    items.each_with_index do |item, position|
-      table.add_row([position + 1, item.type, item.details])
-    end
+    rows = items.map.with_index { |item, position| [position + 1, item.type, item.details] }
+    table = Terminal::Table.new(@table_options.merge(rows: rows))
     table.align_column(0, :right)
     puts table
   end
