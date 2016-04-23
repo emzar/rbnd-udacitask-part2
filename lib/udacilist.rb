@@ -4,7 +4,7 @@ class UdaciList
   ITEMS_TYPES = %w[todo event link].freeze
 
   def initialize(options={})
-    @title = options[:title]
+    @title = options[:title] || 'Untitled List'
     @items = []
   end
 
