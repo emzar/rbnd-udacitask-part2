@@ -4,7 +4,11 @@ class UdaciList
   ITEMS_TYPES = %w[todo event link].freeze
 
   def initialize(options={})
-    @title = options[:title] || 'Untitled List'
+    title = options[:title] || 'Untitled List'
+    @table = Terminal::Table.new(
+      title: title,
+      headings: [ { value: '#', alignment: :right}, 'desc' ]
+    )
     @items = []
   end
 
@@ -21,11 +25,10 @@ class UdaciList
   end
 
   def all
-    puts "-" * @title.length
-    puts @title
-    puts "-" * @title.length
     @items.each_with_index do |item, position|
-      puts "#{position + 1}) #{item.details}"
+      @table.add_row([position + 1, item.details])
     end
+    @table.align_column(0, :right)
+    puts @table
   end
 end
