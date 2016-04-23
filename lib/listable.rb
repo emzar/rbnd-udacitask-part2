@@ -1,6 +1,6 @@
 module Listable
   def type
-    self.class.to_s.gsub('Item', '')
+    self.class.to_s.gsub('Item', '').downcase
   end
 
   def format_description(description)

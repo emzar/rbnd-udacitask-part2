@@ -5,10 +5,11 @@ class UdaciList
 
   def initialize(options={})
     title = options[:title] || 'Untitled List'
-    @table = Terminal::Table.new(
-      title: title,
-      headings: [ { value: '#', alignment: :right}, 'Type', 'Details' ]
-    )
+    @table_options =
+      {
+        title: title,
+        headings: [ { value: '#', alignment: :right}, 'Type', 'Details' ]
+      }
     @items = []
   end
 
@@ -25,10 +26,26 @@ class UdaciList
   end
 
   def all
-    @items.each_with_index do |item, position|
-      @table.add_row([position + 1, item.type, item.details])
+    table(@items)
+  end
+
+  def filter(item_type)
+    filtered_items = @items.select { |item| item.type == item_type }
+    if filtered_items.empty?
+      puts "There aren't any items of #{item_type} type"
+    else
+      table(filtered_items)
     end
-    @table.align_column(0, :right)
-    puts @table
+  end
+
+  private
+
+  def table(items)
+    table = Terminal::Table.new(@table_options)
+    items.each_with_index do |item, position|
+      table.add_row([position + 1, item.type, item.details])
+    end
+    table.align_column(0, :right)
+    puts table
   end
 end
