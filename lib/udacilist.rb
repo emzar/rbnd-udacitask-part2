@@ -7,7 +7,7 @@ class UdaciList
     title = options[:title] || 'Untitled List'
     @table = Terminal::Table.new(
       title: title,
-      headings: [ { value: '#', alignment: :right}, 'desc' ]
+      headings: [ { value: '#', alignment: :right}, 'Type', 'Details' ]
     )
     @items = []
   end
@@ -26,7 +26,7 @@ class UdaciList
 
   def all
     @items.each_with_index do |item, position|
-      @table.add_row([position + 1, item.details])
+      @table.add_row([position + 1, item.type, item.details])
     end
     @table.align_column(0, :right)
     puts @table

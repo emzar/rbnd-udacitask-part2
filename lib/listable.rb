@@ -1,4 +1,8 @@
 module Listable
+  def type
+    self.class.to_s.gsub('Item', '')
+  end
+
   def format_description(description)
     "#{description}".ljust(25)
   end
