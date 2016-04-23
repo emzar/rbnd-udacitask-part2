@@ -10,11 +10,11 @@ module Listable
     dates.join(' -- ')
   end
 
-  def format_priority
-    value = " ⇧" if @priority == "high"
-    value = " ⇨" if @priority == "medium"
-    value = " ⇩" if @priority == "low"
-    value = "" if !@priority
-    return value
+  def format_priority(priority)
+    value = " ⇧" if priority == "high"
+    value = " ⇨" if priority == "medium"
+    value = " ⇩" if priority == "low"
+    value = "" if !priority
+    value
   end
 end
